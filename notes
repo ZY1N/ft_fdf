@@ -1,0 +1,12 @@
+cc -L minilibx_macos/ -I minilibx_macros/ -lmlx -framework OpenGL -framework AppKit main.c minilibx/mlx.h
+
+cc -I minilibx_macros/ main.c -L minilibx_macros -lmlx -framework OpenGL -framework Appkit
+
+
+gcc -l links with a library file
+gcc -L looks in directory for library files
+
+gcc -I adds includde directory of header files
+
+
+cc -L minilibx_macos/ -I minilibx_macros/ -lmlx -framework OpenGL -framework AppKit main.c ./libft/libft.a get_next_line.c
