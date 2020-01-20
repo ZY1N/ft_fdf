@@ -16,8 +16,8 @@ void draw_verticle(map this, void *mlx_ptr, void *win_ptr)
 {
 	int flag = 0;
 	vector v;
-	vector2 temp;
-	vector2 v2;
+	vector temp;
+	vector v2;
 
 	for(int x = 0; x < this.x; x++)
 	{
@@ -49,8 +49,8 @@ void draw_verticle(map this, void *mlx_ptr, void *win_ptr)
 void render(map this, void *mlx_ptr, void *win_ptr)
 {
 	vector v;
-	vector2 temp;
-	vector2 v2;
+	vector temp;
+	vector v2;
 
 	int flag = 0;
 

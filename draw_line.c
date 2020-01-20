@@ -12,12 +12,12 @@
 
 #include "fdf.h"
 
- void	draw_line6(vector2 f, vector2 s, void * mlx_ptr, void * win_ptr)
+void	draw_line6(vector f, vector s, void *mlx_ptr, void *win_ptr)
 {
-	vector2	delta;
-	vector2	sign;
-	vector2	cur;
-	int		error[2];
+	vector delta;
+	vector sign;
+	vector cur;
+	int error[2];
 
 	delta.x = abs(s.x - f.x);
 	delta.y = abs(s.y - f.y);
@@ -42,11 +42,11 @@
 }
 
 /*
-void blinealgo(vector2 f, vector s, void *mlx_ptr, void * win_ptr)
+void blinealgo(vector f, vector s, void *mlx_ptr, void * win_ptr)
 {
-    vector2 delta;
-    vector2 sign;
-    vector2 cur;
+    vector delta;
+    vector sign;
+    vector cur;
     int error[2];
 
     delta.x = abs(s.x - f.x)
