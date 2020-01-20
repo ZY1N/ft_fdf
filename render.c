@@ -80,4 +80,3 @@ void render(map this, void *mlx_ptr, void *win_ptr)
 	}
 	draw_verticle(this, mlx_ptr, win_ptr);
 }
-

@@ -45,11 +45,8 @@ vector rotatey(vector point, float angle_x, float angle_y, float angle_z)
         {-sin(angle_y), 0, cos(angle_y)}
     };
     ret.x = point.x * rotatey[0][0] + point.y * rotatey[0][1] + point.z * rotatey[0][2];
-    // ret.x = x * cos(theta) + y * 0 + z * sin(theta);
     ret.y = point.x * rotatey[1][0] + point.y * rotatey[1][1] + point.z * rotatey[1][2];
-    // ret.y = y * 1
     ret.z = point.x * rotatey[2][0] + point.y * rotatey[2][1] + point.z * rotatey[2][2];
-    // ret.z = -sin(theta) * x + z * cos(=theta)
     return(ret);
 }
 
@@ -66,11 +63,8 @@ vector rotatez(vector point, float angle_x, float angle_y, float angle_z)
         {0, 0, 1}
     };
     ret.x = point.x * rotatez[0][0] + point.y * rotatez[0][1] + point.z * rotatez[0][2];
-    // ret.x = cos(a) * x + - sin(a) * y
     ret.y = point.x * rotatez[1][0] + point.y * rotatez[1][1] + point.z * rotatez[1][2];
-    // ret.y = sin(a) * x + cos(a) * cos(a)
     ret.z = point.x * rotatez[2][0] + point.y * rotatez[2][1] + point.z * rotatez[2][2];
-    // ret.z = z
     return(ret);
 }
 
@@ -81,7 +75,6 @@ vector rotationdriver(vector point, float angle_x, float angle_y, float angle_z)
     ret.x = point.x; 
     ret.y = point.y;
     ret.z = point.z;
-
     ret = rotatex(point, angle_x, angle_y, angle_z);
     ret = rotatey(ret, angle_x, angle_y, angle_z);
     ret = rotatez(ret, angle_x, angle_y, angle_z);

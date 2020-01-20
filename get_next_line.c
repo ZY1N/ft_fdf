@@ -74,4 +74,3 @@ int			get_next_line(const int fd, char **line)
 		ifnull(array, fd, line);
 	return (1);
 }
-
