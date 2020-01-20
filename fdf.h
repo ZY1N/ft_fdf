@@ -51,17 +51,13 @@ void	rotate_y(float *x, float *z, double beta);
 void	rotate_z(float *x, float *y, double gamma);
 
 
-//void draw_line(int x_1, int y_1, int x_2, int y_2, void *mlx_ptr, void *win_ptr);
-//void draw_line(int x0, int y0, int x1, int y1, void * mlx_ptr, void * win_ptr);
 void draw_line(int x1, int y1, int x2, int y2, void * mlx_ptr, void * win_ptr);
 vector mathmult(vector point);
 vector mathmult2(vector point, float angle);
 void bresenham(int x1, int y1, int x2, int y2, void *mlx_ptr, void * win_ptr);
 void bresenham2(int x1, int y1, int x2, int y2, void * mlx_ptr, void * win_ptr) ;
- void	draw_line6(vector2 f, vector2 s, void * mlx_ptr, void * win_ptr);
-//void	draw_line6(vector f, vector s, void * mlx_ptr, void * win_ptr);
+void	draw_line6(vector2 f, vector2 s, void * mlx_ptr, void * win_ptr);
 vector rotation(vector point, float angle_x, float angle_y, float angle_z);
-//void render(map this);
 void render(map this, void *mlx_ptr, void *win_ptr);
 vector iso_rotation(vector point, float angle_x, float angle_y);
 vector rotate_test(vector v, float radx, float rady);
