@@ -12,21 +12,21 @@
 
 #include "fdf.h"
 
-t_vector	rot_scale_projection(int x, int y, t_map this, float scale, t_rad rad)
+t_vector	rot_scale_projection(t_coord coord, t_map map, float scale, t_rad r)
 {
 	t_vector v;
 
-	v.x = x * scale;
-	v.y = y * scale;
-	v.z = this.int_map[y][x] * -scale;
-	v = rotdriver(v, rad.radx, rad.rady, rad.radz);
+	v.x = coord.x * scale;
+	v.y = coord.y * scale;
+	v.z = map.int_map[coord.y][coord.x] * -scale;
+	v = rotdriver(v, r.radx, r.rady, r.radz);
 	v.x += 750;
 	v.y += 750;
 	v.z += 750;
 	return (v);
 }
 
-void	draw_verticle(t_map this, void *mlx_ptr, void *win_ptr, t_rad rad)
+void		draw_verticle(t_map this, void *mlx_ptr, void *win_ptr, t_rad rad)
 {
 	int			flag;
 	t_vector	v;
@@ -42,7 +42,7 @@ void	draw_verticle(t_map this, void *mlx_ptr, void *win_ptr, t_rad rad)
 		coord.y = 0;
 		while (coord.y < this.y)
 		{
-			v = rot_scale_projection(coord.x, coord.y, this, scale, rad);
+			v = rot_scale_projection(coord, this, scale, rad);
 			if (flag == 1)
 				drawl(temp, v, mlx_ptr, win_ptr);
 			temp = v;
@@ -53,7 +53,7 @@ void	draw_verticle(t_map this, void *mlx_ptr, void *win_ptr, t_rad rad)
 	}
 }
 
-void	draw_horizontal(t_map this, void *mlx_ptr, void *win_ptr, t_rad rad)
+void		draw_horizontal(t_map this, void *mlx_ptr, void *win_ptr, t_rad rad)
 {
 	int			flag;
 	t_vector	v;
@@ -69,7 +69,7 @@ void	draw_horizontal(t_map this, void *mlx_ptr, void *win_ptr, t_rad rad)
 		coord.x = 0;
 		while (coord.x < this.x)
 		{
-			v = rot_scale_projection(coord.x, coord.y, this, scale, rad);
+			v = rot_scale_projection(coord, this, scale, rad);
 			if (flag == 1)
 				drawl(temp, v, mlx_ptr, win_ptr);
 			temp = v;
@@ -80,7 +80,7 @@ void	draw_horizontal(t_map this, void *mlx_ptr, void *win_ptr, t_rad rad)
 	}
 }
 
-void	render(t_map this, void *mlx_ptr, void *win_ptr, double angle)
+void		render(t_map this, void *mlx_ptr, void *win_ptr, double angle)
 {
 	t_rad rad;
 

@@ -60,12 +60,12 @@ void	gofindstuff(char *s, int *x_size, int *y_size)
 	(*y_size)++;
 }
 
-t_map		map_populate(int x_size, int y_size, char *s)
+t_map	map_populate(int x_size, int y_size, char *s)
 {
 	int		fd;
 	int		i;
 	char	*line;
-	t_map		main_map;
+	t_map	main_map;
 
 	i = 0;
 	main_map.x = x_size / y_size;
@@ -81,7 +81,7 @@ t_map		map_populate(int x_size, int y_size, char *s)
 	return (main_map);
 }
 
-t_map		int_map_extraction(t_map main_map, int x_size, int y_size)
+t_map	int_map_extraction(t_map main_map, int x_size, int y_size)
 {
 	int		i;
 	int		x;
@@ -134,7 +134,7 @@ int		main(int argc, char **argv)
 	int		y_size;
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_map		main_map;
+	t_map	main_map;
 
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, 1500, 1500, "FDF_BETA");
