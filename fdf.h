@@ -33,6 +33,11 @@ typedef struct map
 	float	z;
 } vector; */
 
+typedef	struct matrix
+{
+	float rotatex[3][3];
+} matrix;
+
 typedef struct vector
 {	
 	int		x;
@@ -53,12 +58,14 @@ void	bresenham(int x1, int y1, int x2, int y2, void *mlx_ptr, void * win_ptr);
 void	bresenham2(int x1, int y1, int x2, int y2, void * mlx_ptr, void * win_ptr) ;
 void	draw_line6(vector f, vector s, void * mlx_ptr, void * win_ptr);
 vector	rotation(vector point, float angle_x, float angle_y, float angle_z);
-void	render(map this, void *mlx_ptr, void *win_ptr);
+//void	render(map this, void *mlx_ptr, void *win_ptr);
 vector	iso_rotation(vector point, float angle_x, float angle_y);
 vector	rotate_test(vector v, float radx, float rady);
-vector	rotationdriver(vector point, float angle_x, float angle_y, float angle_z);
+//vector	rotationdriver(vector point, float angle_x, float angle_y, float angle_z);
+vector	rotationdriver(vector point, float a_x, float a_y, float a_z);
 vector	rotatez(vector point, float angle_x, float angle_y, float angle_z);
 vector	rotatey(vector point, float angle_x, float angle_y, float angle_z);
 vector	rotatex(vector point, float angle_x, float angle_y, float angle_z);
+void	render(map this, void *mlx_ptr, void *win_ptr, float angle);
 
 #endif

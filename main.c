@@ -145,7 +145,7 @@ int		main(int argc, char **argv)
 				return (1);
 			main_map = map_populate(x_size, y_size, argv[1], main_map);
 			main_map = int_map_extraction(main_map, x_size, y_size);
-			render(main_map, mlx_ptr, win_ptr);
+			render(main_map, mlx_ptr, win_ptr, 30);
 			freestuff(y_size, main_map, 0);
 			mlx_loop(mlx_ptr);
 			free(win_ptr);
