@@ -12,10 +12,10 @@
 
 #include "fdf.h"
 
-vector	rotatex(vector point, float angle_x, float angle_y, float angle_z)
+t_vector	rotatex(t_vector point, double angle_x)
 {
-	vector	ret;
-	float	rotx[3][3];
+	t_vector	ret;
+	double		rotx[3][3];
 
 	rotx[0][0] = 1;
 	rotx[0][1] = 0;
@@ -35,10 +35,10 @@ vector	rotatex(vector point, float angle_x, float angle_y, float angle_z)
 	return (ret);
 }
 
-vector	rotatey(vector point, float angle_x, float angle_y, float angle_z)
+t_vector	rotatey(t_vector point, double angle_y)
 {
-	vector	ret;
-	float	roty[3][3];
+	t_vector	ret;
+	double		roty[3][3];
 
 	roty[0][0] = cos(angle_y);
 	roty[0][1] = 0;
@@ -58,10 +58,10 @@ vector	rotatey(vector point, float angle_x, float angle_y, float angle_z)
 	return (ret);
 }
 
-vector	rotatez(vector point, float angle_x, float angle_y, float angle_z)
+t_vector	rotatez(t_vector point, double angle_z)
 {
-	vector	ret;
-	float	rotz[3][3];
+	t_vector	ret;
+	double		rotz[3][3];
 
 	rotz[0][0] = cos(angle_z);
 	rotz[0][1] = -sin(angle_z);
@@ -81,12 +81,12 @@ vector	rotatez(vector point, float angle_x, float angle_y, float angle_z)
 	return (ret);
 }
 
-vector	rotationdriver(vector point, float a_x, float a_y, float a_z)
+t_vector	rotdriver(t_vector point, double a_x, double a_y, double a_z)
 {
-	vector ret;
+	t_vector ret;
 
-	ret = rotatex(point, a_x, a_y, a_z);
-	ret = rotatey(ret, a_x, a_y, a_z);
-	ret = rotatez(ret, a_x, a_y, a_z);
+	ret = rotatex(point, a_x);
+	ret = rotatey(ret, a_y);
+	ret = rotatez(ret, a_z);
 	return (ret);
 }

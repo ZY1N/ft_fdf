@@ -15,7 +15,7 @@
 #include "get_next_line.h"
 #include "fdf.h"
 
-void	freestuff(int y_size, map main_map, int i)
+void	freestuff(int y_size, t_map main_map, int i)
 {
 	while (i < y_size)
 	{
@@ -60,11 +60,12 @@ void	gofindstuff(char *s, int *x_size, int *y_size)
 	(*y_size)++;
 }
 
-map		map_populate(int x_size, int y_size, char *s, map main_map)
+t_map		map_populate(int x_size, int y_size, char *s)
 {
 	int		fd;
 	int		i;
 	char	*line;
+	t_map		main_map;
 
 	i = 0;
 	main_map.x = x_size / y_size;
@@ -80,7 +81,7 @@ map		map_populate(int x_size, int y_size, char *s, map main_map)
 	return (main_map);
 }
 
-map		int_map_extraction(map main_map, int x_size, int y_size)
+t_map		int_map_extraction(t_map main_map, int x_size, int y_size)
 {
 	int		i;
 	int		x;
@@ -133,7 +134,7 @@ int		main(int argc, char **argv)
 	int		y_size;
 	void	*mlx_ptr;
 	void	*win_ptr;
-	map		main_map;
+	t_map		main_map;
 
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, 1500, 1500, "FDF_BETA");
@@ -143,7 +144,7 @@ int		main(int argc, char **argv)
 		{
 			if (gather_size(&x_size, &y_size, argv[1]) == 0)
 				return (1);
-			main_map = map_populate(x_size, y_size, argv[1], main_map);
+			main_map = map_populate(x_size, y_size, argv[1]);
 			main_map = int_map_extraction(main_map, x_size, y_size);
 			render(main_map, mlx_ptr, win_ptr, 30);
 			freestuff(y_size, main_map, 0);
