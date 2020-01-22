@@ -20,9 +20,9 @@ t_vector	rot_scale_projection(t_coord coord, t_map map, float scale, t_rad r)
 	v.y = coord.y * scale;
 	v.z = map.int_map[coord.y][coord.x] * -scale;
 	v = rotdriver(v, r.radx, r.rady, r.radz);
-	v.x += 750;
-	v.y += 750;
-	v.z += 750;
+	v.x += 50;
+	v.y += 50;
+	//v.z += 750;
 	return (v);
 }
 
