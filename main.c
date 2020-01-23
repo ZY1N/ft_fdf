@@ -72,6 +72,11 @@ t_map	map_populate(int x_size, int y_size, char *s)
 	main_map.y = y_size;
 	main_map.full_map = malloc(sizeof(char *) * x_size);
 	fd = open(s, O_RDONLY);
+	if(fd < 0)
+	{
+		printf("FAILURE\n");
+		exit(1);
+	}
 	while (get_next_line(fd, &line))
 	{
 		main_map.full_map[i] = line;
@@ -148,56 +153,9 @@ t_map	copymapfrompointer(t_map *map)
 	ret.downshift = map->downshift;
 	ret.leftshift = map->leftshift;
 	ret.rightshift = map->rightshift;
+	ret.mlx_ptr = map->mlx_ptr;
+	ret.win_ptr = map->win_ptr;
 	return (ret);
-}
-
-
-
-void	print_struct(t_map map)
-{
-	/* char	**full_map;
-	int		**int_map;
-	int		x;
-	int		y;
-	int		upshift;
-	int		downshift;
-	int		leftshift;
-	int		rightshift;
-	void	*mlx_ptr;
-	void	*win_ptr; */
-	printf("x %d y %d up %d down %d left %d right %d\n", map.x, map.y, map.upshift, map.downshift, map.leftshift, map.rightshift);
-
-	for(int y = 0; y < map.y; y++)
-	{
-		for(int x = 0; x < map.x; x++)
-		{
-			printf("%d", map.int_map[y][x]);
-		}
-		printf("\n");
-	}
-}
-void	print_struct_ptr(t_map *map)
-{
-	/* char	**full_map;
-	int		**int_map;
-	int		x;
-	int		y;
-	int		upshift;
-	int		downshift;
-	int		leftshift;
-	int		rightshift;
-	void	*mlx_ptr;
-	void	*win_ptr; */
-	printf("x %d y %d up %d down %d left %d right %d\n", map->x, map->y, map->upshift, map->downshift, map->leftshift, map->rightshift);
-
-	//for(int y = 0; y < map->y; y++)
-//	{
-//		for(int x = 0; x < map->x; x++)
-		//{
-			printf("%d", map->int_map[0][0]);
-	//	}
-	//	printf("\n");
-	//}
 }
 
 void	rerender(t_map map)
@@ -211,28 +169,48 @@ int 	keys(int key, void *map)
 	t_map maps;
 
 	maps = copymapfrompointer(map);
-
-	print_struct_ptr(map);
 	if (key == 53)
 		exit(1);
 	if (key == 126) //upkey
 	{
-		maps.upshift += 5;
-		((t_map *)map)->upshift += 5;
-		//mlx_clear_window(((t_map *)map)->mlx_ptr, ((t_map *)map)->win_ptr);
-		mlx_clear_window(maps.mlx_ptr, maps.win_ptr);
-		//render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+		maps.upshift -= 5;
+		((t_map *)map)->upshift -= 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	//printf("upshift in keys function: %d\n", ((t_map *)map)->upshift);
-
-	/*
 	if (key == 124) //leftkey
-		(t_map)map->rightshift += 5;
+	{
+		maps.rightshift += 5;
+		((t_map *)map)->rightshift += 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
 	if (key == 125) //downkey
-		(t_map)map->downshift += 5;
+	{
+		maps.downshift += 5;
+		((t_map *)map)->downshift += 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}	
 	if (key == 123) //leftkey
-		(t_map)map->leftshift += 5; */
-	//printf("hello i waz here %d\n", key);
+	{
+		maps.leftshift -= 5;
+		((t_map *)map)->leftshift -= 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
+
+	if (key == 31) //okey
+	{
+		maps.leftshift -= 5;
+		((t_map *)map)->leftshift -= 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
+	
+	if (key == 35) //pkey
+	{
+		maps.leftshift -= 5;
+		((t_map *)map)->leftshift -= 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
+
+	printf("key %d\n", key);
 	return (1);
 }
 
