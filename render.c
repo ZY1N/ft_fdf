@@ -21,8 +21,13 @@ t_vector	rot_scale_projection(t_coord coord, t_map map, float scale, t_rad r)
 	v.z = map.int_map[coord.y][coord.x] * -scale;
 	v = rotdriver(v, r.radx, r.rady, r.radz);
 	v.x += 50;
-	v.y += 50;
-	//v.z += 750;
+	v.y = v.y + 50 + map.upshift;
+	v.z += 50;
+
+	//printf("upshift in rot %d\n", map.upshift);
+	//v.x += map.leftshift + map.rightshift;
+	//v.y += map.upshift + map.downshift;
+	//v.z += ;
 	return (v);
 }
 

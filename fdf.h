@@ -24,6 +24,12 @@ typedef struct	s_map
 	int		**int_map;
 	int		x;
 	int		y;
+	int		upshift;
+	int		downshift;
+	int		leftshift;
+	int		rightshift;
+	void	*mlx_ptr;
+	void	*win_ptr;
 }				t_map;
 
 typedef struct	s_vector
