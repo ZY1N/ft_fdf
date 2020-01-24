@@ -24,7 +24,7 @@ t_map	map_populate(int x_size, int y_size, char *s, int i)
 	fd = open(s, O_RDONLY);
 	if (fd < 0)
 	{
-		printf("FAILURE\n");
+		write(1, "FAILURE\n", 8);
 		exit(1);
 	}
 	while (get_next_line(fd, &line))
@@ -75,7 +75,7 @@ int		gather_size(int *x_size, int *y_size, char *s)
 	fd = open(s, O_RDONLY);
 	if (fd < 0)
 	{
-		printf("Usage : ./fdf <filename> [ case_size z_size ]");
+		write(1, "Usage : ./fdf <filename> [ case_size z_size ]\n", 46);
 		return (0);
 	}
 	while (get_next_line(fd, &line))
@@ -117,5 +117,5 @@ int		main(int argc, char **argv)
 		fdf_driver(mlx_ptr, argv[1]);
 	}
 	else
-		printf("Usage : ./fdf <filename> [ case_size z_size ]");
+		write(1, "Usage : ./fdf <filename> [ case_size z_size ]", 46);
 }
