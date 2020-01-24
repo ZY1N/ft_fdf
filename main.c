@@ -180,101 +180,98 @@ int 	keys(int key, void *map)
 	maps = copymapfrompointer(map);
 	if (key == ESC)
 		exit(1);
-	if (key == UP) //upkey
+	if (key == UP)
 	{
 		maps.upshift -= 15;
 		((t_map *)map)->upshift -= 15;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	if (key == RIGHT) //leftkey
+	if (key == RIGHT)
 	{
 		maps.rightshift += 15;
 		((t_map *)map)->rightshift += 15;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	if (key == DOWN) //downkey
+	if (key == DOWN)
 	{
 		maps.downshift += 15;
 		((t_map *)map)->downshift += 15;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}	
-	if (key == LEFT) //leftkey
+	if (key == LEFT)
 	{
 		maps.leftshift -= 15;
 		((t_map *)map)->leftshift -= 15;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-
-	if (key == OKEY) //okey zoom in
+	if (key == OKEY)
 	{
 		maps.scale += 5;
 		((t_map *)map)->scale += 5;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	
-	if (key == PKEY) //pkey zoom out
+	if (key == PKEY)
 	{
 		maps.scale -= 5;
 		((t_map *)map)->scale -= 5;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-
-	if (key == RKEY) //rkey
+	if (key == RKEY)
 	{
 		maps.anglex -= 5;
 		((t_map *)map)->anglex -= 5;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	if (key == TKEY) //tkey
+	if (key == TKEY)
 	{
 		maps.angley -= 5;
 		((t_map *)map)->angley -= 5;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	if (key == YKEY) //ykey
+	if (key == YKEY)
 	{
 		maps.anglez -= 5;
 		((t_map *)map)->anglez -= 5;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
 
-	if (key == FKEY) //fkey
+	if (key == FKEY)
 	{
 		maps.anglex += 5;
 		((t_map *)map)->anglex += 5;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	if (key == GKEY) //gkey
+	if (key == GKEY)
 	{
 		maps.angley += 5;
 		((t_map *)map)->angley += 5;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	if (key == HKEY) //hkey
+	if (key == HKEY)
 	{
 		maps.anglez += 5;
 		((t_map *)map)->anglez += 5;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-		if (key == ONEKEY) //1key
+	if (key == ONEKEY)
 	{
 		maps.scalex += 5;
 		((t_map *)map)->scalex += 5;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	if (key == TWOKEY) //2key
+	if (key == TWOKEY)
 	{
 		maps.scalex -= 5;
 		((t_map *)map)->scalex -= 5;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	if (key == ZKEY) //zkey
+	if (key == ZKEY)
 	{
 		maps.scalex -= 5;
 		((t_map *)map)->scalex -= 5;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	if (key == UKEY) //ukey
+	if (key == UKEY)
 	{
 		maps.anglex = 30;
 		maps.angley = 30;
@@ -284,7 +281,7 @@ int 	keys(int key, void *map)
 		((t_map *)map)->anglez = 30;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}	
-	if (key == IKEY) //ikey
+	if (key == IKEY)
 	{
 		maps.anglex = 45;
 		maps.angley = 45;
@@ -294,13 +291,13 @@ int 	keys(int key, void *map)
 		((t_map *)map)->anglez = 45;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	if (key == CKEY) //ckey
+	if (key == CKEY)
 	{
 		maps.color = rand();
 		((t_map *)map)->color = maps.color;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	if (key == VKEY) //vkey
+	if (key == VKEY)
 	{
 		maps.gradon = 1;
 		((t_map *)map)->gradon = 1;
