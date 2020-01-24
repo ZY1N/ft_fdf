@@ -324,7 +324,6 @@ void	fdf_driver(void *mlx_ptr, char *s)
 	win_ptr = mlx_new_window(mlx_ptr, 1000, 750, "FDF");
 	main_map.mlx_ptr = mlx_ptr;
 	main_map.win_ptr = win_ptr;
-	//main_map.scale = 20;
 	main_map.anglex = 30;
 	main_map.angley = 30;
 	main_map.anglez = 30;
@@ -335,9 +334,6 @@ void	fdf_driver(void *mlx_ptr, char *s)
 	main_map.coloradj = 100;
 	main_map.rightshift = (1000 - main_map.x * main_map.scale);
 	main_map.upshift = (750 - main_map.y * main_map.scale)/2;
-	printf("y %d\n", main_map.y);
-	printf("x %d\n", main_map.x);
-	//(main_map.y * 50) - main_map.y * 20)/2;
 	render(main_map, mlx_ptr, win_ptr, 30);
 	mlx_hook(win_ptr, 2, 0, keys, &main_map);
 	mlx_loop(mlx_ptr);
