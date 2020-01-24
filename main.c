@@ -100,7 +100,7 @@ void	fdf_driver(void *mlx_ptr, char *s)
 	main_map = int_map_extraction(main_map, x_size, y_size);
 	win_ptr = mlx_new_window(mlx_ptr, 1000, 750, "FDF");
 	main_map = standard_settings(mlx_ptr, win_ptr, main_map);
-	render(main_map, mlx_ptr, win_ptr, 30);
+	render(main_map, mlx_ptr, win_ptr);
 	mlx_hook(win_ptr, 2, 0, keys, &main_map);
 	mlx_loop(mlx_ptr);
 	free(win_ptr);
