@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include "minilibx/mlx.h"
 # include <math.h>
+# include "get_next_line.h"
 
 typedef struct	s_map
 {
@@ -87,5 +88,17 @@ typedef struct s_coord
 void			drawl(t_vector f, t_vector s, void *mlx_ptr, void *win_ptr, t_map this);
 t_vector		rotdriver(t_vector point, double a_x, double a_y, double a_z);
 void			render(t_map this, void *mlx_ptr, void *win_ptr, double angle);
+int			keys(int key, void *map);
+void		key_1(int key, void *map, t_map maps);
+void		key_2(int key, void *map, t_map maps);
+void		key_3(int key, void *map, t_map maps);
+void		key_4(int key, void *map, t_map maps);
+void		key_5(int key, void *map, t_map maps);
+t_map		copymapfrompointer(t_map *map);
+t_map	standard_settings(void *mlx_ptr, void *win_ptr, t_map main_map);
+t_map	copymapfrompointer(t_map *map);
+void	freestuff(int y_size, t_map main_map, int i);
+int		is_anum(char *s);
+void	gofindstuff(char *s, int *x_size, int *y_size);
 
 #endif
