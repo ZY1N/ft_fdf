@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	drawl(t_vector f, t_vector s, void *mlx_ptr, void *win_ptr)
+void	drawl(t_vector f, t_vector s, void *mlx_ptr, void *win_ptr, t_map map)
 {
 	t_vector	delta;
 	t_vector	sign;
@@ -27,7 +27,10 @@ void	drawl(t_vector f, t_vector s, void *mlx_ptr, void *win_ptr)
 	cur = f;
 	while (cur.x != s.x || cur.y != s.y)
 	{
-		mlx_pixel_put(mlx_ptr, win_ptr, cur.x, cur.y, 123123312);
+		if(map.gradon == 1)
+			mlx_pixel_put(mlx_ptr, win_ptr, cur.x, cur.y, map.color + (map.coloradj * cur.x));
+		else
+			mlx_pixel_put(mlx_ptr, win_ptr, cur.x, cur.y, map.color);
 		if ((error[1] = error[0] * 2) > -delta.y)
 		{
 			error[0] -= delta.y;

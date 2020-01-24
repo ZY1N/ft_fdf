@@ -155,6 +155,15 @@ t_map	copymapfrompointer(t_map *map)
 	ret.rightshift = map->rightshift;
 	ret.mlx_ptr = map->mlx_ptr;
 	ret.win_ptr = map->win_ptr;
+	ret.scale = map->scale;
+	ret.anglex = map->anglex;
+	ret.angley = map->angley;
+	ret.anglez = map->anglez;
+	ret.scalex = map->scalex;
+	ret.scaley = map->scaley;
+	ret.scalez = map->scalez;
+	ret.color = map->color;
+	ret.coloradj = map->coloradj;
 	return (ret);
 }
 
@@ -169,48 +178,134 @@ int 	keys(int key, void *map)
 	t_map maps;
 
 	maps = copymapfrompointer(map);
-	if (key == 53)
+	if (key == ESC)
 		exit(1);
-	if (key == 126) //upkey
+	if (key == UP) //upkey
 	{
-		maps.upshift -= 5;
-		((t_map *)map)->upshift -= 5;
+		maps.upshift -= 15;
+		((t_map *)map)->upshift -= 15;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	if (key == 124) //leftkey
+	if (key == RIGHT) //leftkey
 	{
-		maps.rightshift += 5;
-		((t_map *)map)->rightshift += 5;
+		maps.rightshift += 15;
+		((t_map *)map)->rightshift += 15;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
-	if (key == 125) //downkey
+	if (key == DOWN) //downkey
 	{
-		maps.downshift += 5;
-		((t_map *)map)->downshift += 5;
+		maps.downshift += 15;
+		((t_map *)map)->downshift += 15;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}	
-	if (key == 123) //leftkey
+	if (key == LEFT) //leftkey
 	{
-		maps.leftshift -= 5;
-		((t_map *)map)->leftshift -= 5;
+		maps.leftshift -= 15;
+		((t_map *)map)->leftshift -= 15;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
 
-	if (key == 31) //okey
+	if (key == OKEY) //okey zoom in
 	{
-		maps.leftshift -= 5;
-		((t_map *)map)->leftshift -= 5;
+		maps.scale += 5;
+		((t_map *)map)->scale += 5;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
 	
-	if (key == 35) //pkey
+	if (key == PKEY) //pkey zoom out
 	{
-		maps.leftshift -= 5;
-		((t_map *)map)->leftshift -= 5;
+		maps.scale -= 5;
+		((t_map *)map)->scale -= 5;
 		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
 	}
 
-	printf("key %d\n", key);
+	if (key == RKEY) //rkey
+	{
+		maps.anglex -= 5;
+		((t_map *)map)->anglex -= 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
+	if (key == TKEY) //tkey
+	{
+		maps.angley -= 5;
+		((t_map *)map)->angley -= 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
+	if (key == YKEY) //ykey
+	{
+		maps.anglez -= 5;
+		((t_map *)map)->anglez -= 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
+
+	if (key == FKEY) //fkey
+	{
+		maps.anglex += 5;
+		((t_map *)map)->anglex += 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
+	if (key == GKEY) //gkey
+	{
+		maps.angley += 5;
+		((t_map *)map)->angley += 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
+	if (key == HKEY) //hkey
+	{
+		maps.anglez += 5;
+		((t_map *)map)->anglez += 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
+		if (key == ONEKEY) //1key
+	{
+		maps.scalex += 5;
+		((t_map *)map)->scalex += 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
+	if (key == TWOKEY) //2key
+	{
+		maps.scalex -= 5;
+		((t_map *)map)->scalex -= 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
+	if (key == ZKEY) //zkey
+	{
+		maps.scalex -= 5;
+		((t_map *)map)->scalex -= 5;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
+	if (key == UKEY) //ukey
+	{
+		maps.anglex = 30;
+		maps.angley = 30;
+		maps.anglez = 30;
+		((t_map *)map)->anglex = 30;
+		((t_map *)map)->angley = 30;
+		((t_map *)map)->anglez = 30;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}	
+	if (key == IKEY) //ikey
+	{
+		maps.anglex = 45;
+		maps.angley = 45;
+		maps.anglez = 45;
+		((t_map *)map)->anglex = 45;
+		((t_map *)map)->angley = 45;
+		((t_map *)map)->anglez = 45;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
+	if (key == CKEY) //ckey
+	{
+		maps.color = rand();
+		((t_map *)map)->color = maps.color;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
+	if (key == VKEY) //vkey
+	{
+		maps.gradon = 1;
+		((t_map *)map)->gradon = 1;
+		render(maps, maps.mlx_ptr, maps.win_ptr, 30);
+	}
 	return (1);
 }
 
@@ -225,9 +320,24 @@ void	fdf_driver(void *mlx_ptr, char *s)
 		exit (1);
 	main_map = map_populate(x_size, y_size, s);
 	main_map = int_map_extraction(main_map, x_size, y_size);
-	win_ptr = mlx_new_window(mlx_ptr, main_map.x * 20, main_map.y * 20, "FDF");
+	main_map.scale = 600/(main_map.x);
+	win_ptr = mlx_new_window(mlx_ptr, 1000, 750, "FDF");
 	main_map.mlx_ptr = mlx_ptr;
 	main_map.win_ptr = win_ptr;
+	//main_map.scale = 20;
+	main_map.anglex = 30;
+	main_map.angley = 30;
+	main_map.anglez = 30;
+	main_map.scalex = 10;
+	main_map.scaley = 10;
+	main_map.scalez = 10;
+	main_map.color = 123123312;
+	main_map.coloradj = 100;
+	main_map.rightshift = (1000 - main_map.x * main_map.scale);
+	main_map.upshift = (750 - main_map.y * main_map.scale)/2;
+	printf("y %d\n", main_map.y);
+	printf("x %d\n", main_map.x);
+	//(main_map.y * 50) - main_map.y * 20)/2;
 	render(main_map, mlx_ptr, win_ptr, 30);
 	mlx_hook(win_ptr, 2, 0, keys, &main_map);
 	mlx_loop(mlx_ptr);
@@ -240,22 +350,9 @@ int		main(int argc, char **argv)
 	void	*mlx_ptr;
 
 	mlx_ptr = mlx_init();
-	//win_ptr = mlx_new_window(mlx_ptr, 1500, 1500, "FDF_BETA");
-	if (argc == 2 || argc == 4)
+	if (argc == 2)
 	{
-		if (argc == 2)
-		{
-			fdf_driver(mlx_ptr, argv[1]);
-		}
-		//come back to finish this one
-		if (argc == 4)
-		{
-			if (is_anum(argv[2]) && is_anum(argv[3]))
-			{
-//				case_size = ft_isdigit(3);
-//				z_size = ft_atoi(argv[3]);
-			}
-		}
+		fdf_driver(mlx_ptr, argv[1]);
 	}
 	else
 		printf("Usage : ./fdf <filename> [ case_size z_size ]");
