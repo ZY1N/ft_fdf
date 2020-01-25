@@ -12,6 +12,12 @@
 
 #include "fdf.h"
 
+void	increment(int *axis, int delta, int sign, int *error1)
+{
+	*error1 += delta;
+	*axis += sign;
+}
+
 void	drawl(t_vector f, t_vector s, t_map map)
 {
 	t_vector	delta;
@@ -35,14 +41,8 @@ void	drawl(t_vector f, t_vector s, t_map map)
 		else
 			mlx_pixel_put(map.mlx_ptr, map.win_ptr, cur.x, cur.y, map.color);
 		if (error2 >= delta.y)
-		{
-			error1 += delta.y;
-			cur.x += sign.x;
-		}
+			increment(&(cur.x), delta.y, sign.x, &error1);
 		if (error2 <= delta.x)
-		{
-			error1 += delta.x;
-			cur.y += sign.y;
-		}
+			increment(&(cur.y), delta.x, sign.y, &error1);
 	}
 }

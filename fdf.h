@@ -14,7 +14,6 @@
 # define FDF_H
 
 # include "./libft/libft.h"
-# include <stdio.h>
 # include "minilibx/mlx.h"
 # include <math.h>
 # include "get_next_line.h"
