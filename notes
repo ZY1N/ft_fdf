@@ -10,3 +10,6 @@ gcc -I adds includde directory of header files
 
 
 cc -L minilibx_macos/ -I minilibx_macros/ -lmlx -framework OpenGL -framework AppKit main.c ./libft/libft.a get_next_line.c
+
+@gcc $(CFLAGS) -L $(MINILIBX) -I $(INCLUDE) $(LIBFTSRC) $(MINILIBX) -lmlx -framework OpenGL -framework AppKit $(FILES) -o $(NAME)
+

@@ -10,29 +10,33 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= ft_fdf
+NAME = ft_fdf
 
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 INCLUDE = fdf.h
 
-FILES = main.c drawline.c helper.c keys_1.c keys_2.c matrix.c render.c get_next_line.c
+FILES = main.c draw_line.c helper.c keys_1.c keys_2.c matrix.c render.c get_next_line.c
 
 LIBFTDIR = libft/
 
-LIBFTSRC = /libft/libft.a
+LIBFTSRC = libft/libft.a
+
+MINILIBX = ./minilibx_macos/
 
 OBJ = $(FILES:.c=.o)
 
-$(NAME) :
-	@make re -C $(LIBFTDIR)
-	@gcc $(CFLAGS) $(FILES) -o $(NAME) -I $(INCLUDE) $(LIBFTSRC)
+all: $(NAME)
 
-clean
+$(NAME):
+	@make re -C $(LIBFTDIR)
+	@gcc $(CFLAGS) -L $(MINILIBX) -I $(MINILIBX) -lmlx -framework OpenGL -framework AppKit $(FILES) $(LIBFTSRC) -o $(NAME)
+
+clean:
 	@rm -f $(OBJ)
 	@make clean -C $(LIBFTDIR)
 
-fclean
+fclean:
 	@rm -f $(OBJ)
 	@rm -f $(NAME)
 	@make fclean -C $(LIBFTDIR)
